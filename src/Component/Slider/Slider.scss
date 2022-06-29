@@ -1,0 +1,19 @@
+.slick-prev:before, .slick-next:before{
+    color: #716464;
+}
+
+.slick-prev {
+    left: 0px;
+    z-index: 99;
+}
+.slick-next {
+ right: 0px;
+}
+
+.slick-slide {
+    height:250px;
+ }
+ 
+ .slick-slide img {
+    height:250px;
+ }

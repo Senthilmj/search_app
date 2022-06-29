@@ -1,0 +1,28 @@
+.productSearchTerm {
+  margin: 20px 10px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap
+}
+
+.productList {
+  margin: 10px;
+
+  .productContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .noProductFound {
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+      width: 60%;
+      height: auto;
+    }
+  }
+}
