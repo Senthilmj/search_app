@@ -4,12 +4,15 @@ import { globalContext } from "../../Context/GlobalState";
 import Product from '../Product/Product'
 import ScrollTop from '../Common/ScrollTop'
 import InfiniteScroll from "react-infinite-scroll-component";
-
 import * as resource from "../../Resource/index";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTableCells, faList } from '@fortawesome/free-solid-svg-icons'
+
 import './ProductList.scss'
 const ProductList = () => {
     const { state, setProductList } = useContext(globalContext);
     const { searchTerm, productList } = state;
+    const [currentView, setCurrentView] = useState("grid");
     const [page, setPageData] = useState({
         pageNo: 1,
         totalPage: 1,
@@ -61,12 +64,16 @@ const ProductList = () => {
                     <div className='productSearchTerm'><span >{page?.pageNo}
                         - {page?.totalPage} of {page?.totalItem} results
                         for {searchTerm.toUpperCase()}</span></div>
+                    <div className='viewCont'>
+                        < FontAwesomeIcon onClick={() => { setCurrentView('list') }} title="list view" className={`listIcon ${currentView == 'list' ? "selected" : ''}`} icon={faList} size={"lg"} />
+                        < FontAwesomeIcon onClick={() => { setCurrentView('grid') }} title="grid view" className={`gridIcon ${currentView == 'grid' ? "selected" : ''}`} icon={faTableCells} size={"lg"} />
+                    </div>
                     <InfiniteScroll
                         dataLength={productList.length}
                         next={fetchMoreListItems}
                         hasMore={true}
                         loader={<h4>Loading...</h4>}>
-                        <div className={`productContainer`} >
+                        <div className={`productContainer ${currentView}`} >
                             {productList.map((product, index) => {
                                 return < Product product={product} key={`${product.id}${index}`} />
                             })}
