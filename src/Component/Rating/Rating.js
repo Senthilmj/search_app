@@ -7,7 +7,7 @@ import './Rating.scss'
 
 const Rating = (props) => {
     const { rating } = props
-    const { absoluteRating, count } = rating
+    const { absoluteRating = 0, count = 0 } = rating
     return (
         absoluteRating > 0 ?
             < div className="rating" >
